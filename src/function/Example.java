@@ -15,12 +15,12 @@ public class Example {
         bookRepo.save(book);
     }
 
-    private void actionOnBookNew(long id) {
+    private void actionOnBookRefactoredWithOOP(long id) {
         final var book = bookRepo.findById(id);
         new CompleteBook(bookRepo, book).finish();
     }
 
-    private void actionOnBookNew2(long id) {
+    private void actionOnBookRefactoredWithFunctionStep1(long id) {
         final var book = bookRepo.findById(id);
         execute(new CompletableCommand<Book>() {
             @Override
@@ -30,17 +30,17 @@ public class Example {
         }, bookRepo, book);
     }
 
-    private void actionOnBookNew3(long id) {
+    private void actionOnBookRefactoredWithFunctionStep2(long id) {
         final var book = bookRepo.findById(id);
         execute(() -> book.read(), bookRepo, book);
     }
 
-    private void actionOnBookNew4(long id) {
+    private void actionOnBookRefactoredWithFunctionStep3(long id) {
         final var book = bookRepo.findById(id);
         execute(book::read, bookRepo, book);
     }
 
-    private void actionOnBookRefactored(long id) {
+    private void actionOnBookRefactoredWithFunction(long id) {
         final var book = bookRepo.findById(id);
         execute(Book::read, bookRepo, book);
     }
@@ -52,12 +52,12 @@ public class Example {
         invoiceRepo.save(invoice);
     }
 
-    private void actionOnInvoiceNew(long id) {
+    private void actionOnInvoiceRefactoredWithOOP(long id) {
         final var invoice = invoiceRepo.findById(id);
         new CompleteInvoice(invoiceRepo, invoice).finish();
     }
 
-    private void actionOnInvoiceRefactored(long id) {
+    private void actionOnInvoiceRefactoredWithFunction(long id) {
         final var invoice = invoiceRepo.findById(id);
         execute(Invoice::complete, invoiceRepo, invoice);
     }
